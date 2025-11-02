@@ -1,0 +1,67 @@
+<div class="bar-chart-container">
+  <h2 class="chart-title">泰坦尼克号乘客生存分析 - 按登船港口</h2>
+
+  <div class="chart-wrapper">
+    <div class="chart-content">
+      <div class="y-axis">
+        <div class="y-axis-label">{{ maxValue() }}</div>
+        <div class="y-axis-label">{{ (maxValue() * 0.75).toFixed(0) }}</div>
+        <div class="y-axis-label">{{ (maxValue() * 0.5).toFixed(0) }}</div>
+        <div class="y-axis-label">{{ (maxValue() * 0.25).toFixed(0) }}</div>
+        <div class="y-axis-label">0</div>
+      </div>
+
+      <div class="chart-bars">
+        @for (data of chartData(); track data.label) {
+          <div class="bar-group">
+            <div class="bar-stack">
+              <div
+                class="bar bar-survived"
+                [style.height.%]="getBarHeight(data.survived)"
+                [title]="'生存: ' + data.survived">
+                @if (data.survived > 0) {
+                  <span class="bar-value">{{ data.survived }}</span>
+                }
+              </div>
+              <div
+                class="bar bar-not-survived"
+                [style.height.%]="getBarHeight(data.notSurvived)"
+                [title]="'遇难: ' + data.notSurvived">
+                @if (data.notSurvived > 0) {
+                  <span class="bar-value">{{ data.notSurvived }}</span>
+                }
+              </div>
+            </div>
+            <div class="bar-label">{{ data.label }}</div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item">
+      <span class="legend-color legend-survived"></span>
+      <span>生存</span>
+    </div>
+    <div class="legend-item">
+      <span class="legend-color legend-not-survived"></span>
+      <span>遇难</span>
+    </div>
+  </div>
+
+  <div class="statistics">
+    <h3>统计数据</h3>
+    <div class="stats-grid">
+      @for (data of chartData(); track data.label) {
+        <div class="stat-card">
+          <h4>{{ data.label }}</h4>
+          <p>总人数: {{ data.total }}</p>
+          <p>生存: {{ data.survived }}</p>
+          <p>遇难: {{ data.notSurvived }}</p>
+          <p class="survival-rate">生存率: {{ data.survivalRate.toFixed(1) }}%</p>
+        </div>
+      }
+    </div>
+  </div>
+</div>

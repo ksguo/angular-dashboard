@@ -3,168 +3,132 @@
   background: #ffffff;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.chart-title {
-  text-align: center;
-  color: #333;
-  margin-bottom: 2rem;
-  font-size: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .chart-wrapper {
-  margin: 2rem 0;
+  position: relative;
+  height: 400px;
+  margin-bottom: 2rem;
   padding: 1rem;
   background: #f9f9f9;
   border-radius: 8px;
+  border: 1px solid #e0e0e0;
 }
 
-.chart-content {
+.chart-actions {
   display: flex;
-  gap: 1rem;
-  height: 400px;
-}
-
-.y-axis {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 10px 0;
-  font-size: 0.875rem;
-  color: #666;
-}
-
-.chart-bars {
-  flex: 1;
-  display: flex;
-  align-items: flex-end;
-  gap: 2rem;
-  padding: 10px 0;
-  border-left: 2px solid #ddd;
-  border-bottom: 2px solid #ddd;
-}
-
-.bar-group {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.bar-stack {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column-reverse;
-  gap: 2px;
-}
-
-.bar {
-  width: 100%;
-  min-height: 20px;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  border-radius: 4px 4px 0 0;
+  margin-bottom: 2rem;
+}
+
+.refresh-btn {
+  padding: 0.75rem 2rem;
+  background: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
   transition: all 0.3s ease;
-  position: relative;
 
   &:hover {
-    opacity: 0.8;
-    transform: scaleY(1.02);
+    background: #1565c0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  &:active {
+    transform: translateY(0);
   }
 }
 
-.bar-survived {
-  background: linear-gradient(180deg, #4caf50 0%, #45a049 100%);
-}
-
-.bar-not-survived {
-  background: linear-gradient(180deg, #f44336 0%, #da190b 100%);
-}
-
-.bar-value {
-  color: white;
-  font-weight: bold;
-  font-size: 0.875rem;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-.bar-label {
-  font-size: 0.875rem;
-  color: #333;
-  text-align: center;
-  font-weight: 500;
-}
-
-.legend {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin: 2rem 0;
-  padding: 1rem;
-  background: #f5f5f5;
-  border-radius: 4px;
-}
-
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.legend-color {
-  width: 24px;
-  height: 24px;
-  border-radius: 4px;
-}
-
-.legend-survived {
-  background: #4caf50;
-}
-
-.legend-not-survived {
-  background: #f44336;
-}
-
 .statistics {
-  margin-top: 2rem;
-
   h3 {
     color: #333;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    text-align: center;
   }
 }
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
 }
 
 .stat-card {
-  padding: 1rem;
-  background: #f9f9f9;
-  border-radius: 8px;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-radius: 12px;
   border: 1px solid #e0e0e0;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  }
 
   h4 {
-    color: #333;
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
+    color: #1976d2;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    text-align: center;
+    border-bottom: 2px solid #1976d2;
+    padding-bottom: 0.5rem;
+  }
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+  &:last-child {
+    border-bottom: none;
   }
 
-  p {
-    margin: 0.25rem 0;
-    color: #666;
-    font-size: 0.9rem;
-  }
-
-  .survival-rate {
+  &.highlight {
     margin-top: 0.5rem;
+    padding-top: 1rem;
+    border-top: 2px solid rgba(0, 0, 0, 0.1);
     font-weight: bold;
+  }
+}
+
+.stat-label {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.stat-value {
+  color: #333;
+  font-weight: 600;
+  font-size: 1.1rem;
+
+  &.survived {
     color: #4caf50;
-    font-size: 1rem;
+  }
+
+  &.not-survived {
+    color: #f44336;
+  }
+}
+
+@media (max-width: 768px) {
+  .bar-chart-container {
+    padding: 1rem;
+  }
+
+  .chart-wrapper {
+    height: 300px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
   }
 }

@@ -1,0 +1,48 @@
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  position: relative;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 500;
+  flex: 0 0 auto;
+}
+
+.nav-bar {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: transparent;
+  border: none;
+
+  .mat-mdc-tab-link {
+    color: rgba(255, 255, 255, 0.7);
+
+    &:hover {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    &.mat-mdc-tab-link-active {
+      color: white;
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 0 0 auto;
+
+  button[mat-icon-button] {
+    color: white;
+  }
+}
+
+mat-tab-nav-panel {
+  display: none;
+}

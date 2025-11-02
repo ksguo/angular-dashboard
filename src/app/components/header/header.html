@@ -1,0 +1,46 @@
+<mat-toolbar class="header-container" color="primary">
+
+  <span class="logo">Dashboard</span>
+
+  <nav mat-tab-nav-bar [tabPanel]="tabPanel" class="nav-bar">
+    <a mat-tab-link routerLink="/overview" routerLinkActive #rla1="routerLinkActive" [active]="rla1.isActive">
+      概览
+    </a>
+    <a mat-tab-link routerLink="/analytics" routerLinkActive #rla2="routerLinkActive" [active]="rla2.isActive">
+      分析
+    </a>
+    <a mat-tab-link routerLink="/reports" routerLinkActive #rla3="routerLinkActive" [active]="rla3.isActive">
+      报表
+    </a>
+    <a mat-tab-link routerLink="/settings" routerLinkActive #rla4="routerLinkActive" [active]="rla4.isActive">
+      设置
+    </a>
+  </nav>
+
+  <div class="actions">
+    <button mat-icon-button>
+      <mat-icon>notifications</mat-icon>
+    </button>
+
+    <button mat-icon-button [matMenuTriggerFor]="userMenu">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+  </div>
+
+  <mat-menu #userMenu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>person</mat-icon>
+      <span>个人资料</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>settings</mat-icon>
+      <span>设置</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>exit_to_app</mat-icon>
+      <span>退出</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>
+
+<mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
